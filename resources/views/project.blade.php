@@ -2,44 +2,25 @@
 
 @section('content')
 
-<div class="grid grid-cols-3 gap-4">
-  {{-- To Do --}}
-  <div class="container">
-    <h2 class="text-white font-bold text-xl mb-4">To Do</h2>
-    <ul>
-      <li>
-        <div class="bg-white p-4 rounded">
-          <p class="rounded-full bg-red-700 text-white px-3 py-1 font-bold mb-2 inline-block text-xs">React</p>
-          <h3 class="font-semibold text-lg ml-1">Learn React</h3>
-        </div>
-      </li>
-    </ul>
+<div class="bg-white rounded shadow p-6 w-full lg:w-3/4">
+  <div class="mb-4">
+    <h2 class="text-xl mb-4">Projects / <span class="font-bold">{{ $project->name }}</span></h2>
+    
+    <div class="flex">
+      <input class="shadow appearance-none border rounded w-full py-2 px-3 mr-4 text-grey-darker" placeholder="Add Todo">
+      <button class="flex-no-shrink p-2 border-2 rounded text-blue-500 border-blue-500 hover:text-white hover:bg-blue-500">Add</button>
+    </div>
   </div>
-  {{-- In Progress --}}
-  <div class="container">
-    <h2 class="text-white font-bold text-xl mb-4">In Progress</h2>
+
+  @if ($project->tasks->count() > 0)
     <ul>
-      <li>
-        <div class="bg-white p-4 rounded">
-          <p class="rounded-full bg-red-700 text-white px-3 py-1 font-bold mb-2 inline-block text-xs">Laravel</p>
-          <h3 class="font-semibold text-lg ml-1">Learn Laravel</h3>
-        </div>
-      </li>
+      @foreach ($project->tasks as $task)
+        <x-task :task="$task" />
+      @endforeach
     </ul>
-  </div>
-  {{-- Done --}}
-  <div class="container">
-    <h2 class="text-white font-bold text-xl mb-4">Done</h2>
-    <ul>
-      <li>
-        <div class="bg-white p-4 rounded">
-          <p class="rounded-full bg-red-700 text-white px-3 py-1 font-bold mb-2 inline-block text-xs">Life</p>
-          <h3 class="font-semibold text-lg ml-1">Stress about money</h3>
-        </div>
-      </li>
-    </ul>
-  </div>
-</div>
+  @else
+    <p>No tasks yet.</p>
+  @endif
 </div>
 
 @endsection

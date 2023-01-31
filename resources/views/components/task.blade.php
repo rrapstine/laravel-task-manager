@@ -1,6 +1,7 @@
-@props(['task', 'project'])
+@props(['task'])
 
-<div class="bg-white p-4 rounded">
-  <p class="rounded-full bg-red-700 text-white px-3 py-1 font-bold mb-2 inline-block text-xs">{{ $project }}</p>
-  <h3 class="font-semibold text-lg ml-1">{{ $task }}</h3>
-</div>
+<li class="flex mb-4 space-between items-center">
+  <p class="w-full">{{ $task->task }}</p>
+  <button class="flex-no-shrink p-2 ml-4 border-2 rounded hover:text-white text-green-700 border-green-700 hover:bg-green-700">Done</button>
+  <button class="flex-no-shrink p-2 ml-2 border-2 rounded text-red-500 border-red-500 hover:text-white hover:bg-red-500">Remove</button>
+</li>

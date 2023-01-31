@@ -20,5 +20,5 @@ Route::get('/', function () {
 });
 
 Route::get('/projects/{project}', function (Project $project) {
-    return view('project', ['project' => $project]);
+    return view('project', ['project' => $project->load('tasks')]);
 })->name('projects');

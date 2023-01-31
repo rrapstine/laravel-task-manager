@@ -23,6 +23,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // Compose the header view with all projects
+        view()->composer('partials.header', function ($view) {
+            $view->with('projects', \App\Models\Project::all());
+        });
     }
 }
