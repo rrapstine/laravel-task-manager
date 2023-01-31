@@ -8,4 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Project extends Model
 {
     use HasFactory;
+
+    public function tasks()
+    {
+        return $this->hasMany(Task::class);
+    }
+
+    public static function showProject($project)
+    {
+        return view('project', [
+            'project' => Project::findOrFail($project)
+        ]);
+    }
 }

@@ -23,6 +23,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // Load the main layout with all projects
+        view()->composer('layout', function ($view) {
+            $view->with('projects', \App\Models\Project::all());
+        });
     }
 }

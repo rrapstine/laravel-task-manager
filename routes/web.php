@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Task;
+use App\Models\Project;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +16,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('welcome', ['projects' => Project::all()]);
 });
+
+Route::get('/projects/{project}', function (Project $project) {
+    return view('project', ['project' => $project]);
+})->name('projects');
