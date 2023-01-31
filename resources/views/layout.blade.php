@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
-@include('_head')
+@include('partials.head')
 
 <body class="antialiased bg-slate-900">
-  <div class="grid grid-cols-6 h-screen">
-    @include('_sidebar', ['projects' => $projects])
-
-    <div class="col-span-5 p-8">
+  <div class="flex flex-col h-screen">
+    @include('partials.header')
+    
+    <div class="container flex mx-auto justify-center h-full">
       @yield('content')
     </div>
   </div>
