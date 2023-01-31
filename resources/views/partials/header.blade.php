@@ -1,4 +1,4 @@
-<div class="container mx-auto py-12">
+<div class="container mx-auto py-12" x-data="{ showModal: false}" @keydown.escape="showModal = false">
   <h1 class="text-orange-700 text-4xl font-bold text-center mb-8">Laravel Task Manager</h1>
   
   {{-- Dropdown for selecting a project using AlpineJS --}}
@@ -27,11 +27,22 @@
         @endforeach
 
         <li class="py-2">
-          <a href="#" class="text-orange-700 hover:text-blue-700 font-bold">
+          <a href="#" class="text-orange-700 hover:text-blue-700 font-bold" @click="showModal = true">
             Create a new project
           </a>
         </li>
       @endif
     </ul>
+  </div>
+
+  {{-- Modal --}}
+  <div class="fixed inset-0 z-20 flex items-center justify-center overflow-auto bg-black bg-opacity-50" x-show="showModal">
+    {{-- Modal Inner --}}
+    <div class="max-w-lg px-6 py-4 mx-auto text-left bg-white rounded shadow" @click.away="showModal = false">
+      <div class="flex">
+        <input class="shadow appearance-none border rounded w-full py-2 px-3 mr-4 text-grey-darker" placeholder="Project Name">
+        <button class="flex-no-shrink p-2 border-2 rounded text-blue-500 border-blue-500 hover:text-white hover:bg-blue-500">Create</button>
+      </div>
+    </div>
   </div>
 </div>
