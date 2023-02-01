@@ -4,10 +4,13 @@
 
 <div class="bg-white rounded shadow p-6 w-full lg:w-3/4">
   <div class="mb-4">
-    <div class="flex mb-4 items-center" x-data=>
+    <form method="POST" action="{{ route('project.delete', $project) }}" class="flex mb-4 items-center">
+      @csrf
+      @method('DELETE')
+      
       <h2 class="text-xl mr-2">Projects / <span class="font-bold">{{ $project->name }}</span></h2>
-      <x-button :action="route('project.delete', $project)" type="DELETE" color="red" buttonText="Delete" />
-    </div>
+      <button type="submit" class="flex-no-shrink p-2 ml-4 border-2 rounded hover:text-white text-red-700 border-red-700 hover:bg-red-700">Delete</button>
+    </form>
     
     <livewire:add-task :project="$project" />
   </div>
