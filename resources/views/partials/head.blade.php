@@ -10,5 +10,10 @@
     <!-- AlpineJS -->
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
+    <!-- Laravel Livewire -->
+    @livewireStyles
+    @livewireScripts
+
+    <!-- Everything else -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
