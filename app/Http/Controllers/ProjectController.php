@@ -7,13 +7,18 @@ use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
+
+    public function show(Project $project)
+    {
+        return view('project', ['project' => $project->load('tasks')]);
+    }
+    
     public function create(Request $request)
     {
         $project = Project::create($request->validate([
             'name' => 'required'
         ]));
 
-        // Redirect to the project page with the new project
         return redirect()->route('project', $project);
     }
     
@@ -21,7 +26,6 @@ class ProjectController extends Controller
     {
         Project::findOrFail($project)->delete();
 
-        // Redirect to the welcome page
         return redirect()->route('welcome');
     }
 }

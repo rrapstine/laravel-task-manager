@@ -16,20 +16,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome', ['projects' => Project::all()]);
+    return view('welcome');
 })->name('welcome');
 
-Route::get('/projects/{project}', function (Project $project) {
-    return view('project', ['project' => $project->load('tasks')]);
-})->name('project');
-
+Route::get('/projects/{project}', 'ProjectController@show')->name('project');
 Route::post('/projects/create', 'ProjectController@create')->name('project.create');
 Route::delete('/projects/{project}', 'ProjectController@delete')->name('project.delete');
 
-Route::post('/projects/{project}/tasks/create', function (Project $project) {
-    $project->tasks()->create(request()->validate([
-        'name' => 'required'
-    ]));
-
-    return redirect()->route('projects', $project);
-})->name('task.create');
+Route::post('/projects/{project}/tasks/create', 'TaskController@create')->name('task.create');
