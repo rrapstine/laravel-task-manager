@@ -19,11 +19,11 @@
 
       @if ($projects->count() > 0)
         @foreach ($projects as $project)
-        <li class="pt-2">
-          <a href="{{ route('project', $project) }}" class="hover:text-orange-700 font-bold">
-            {{ $project->name }}
-          </a>
-        </li>
+          <li class="pt-2">
+            <a href="{{ route('project', $project) }}" class="hover:text-orange-700 font-bold">
+              {{ $project->name }}
+            </a>
+          </li>
         @endforeach
 
         <li class="py-2">

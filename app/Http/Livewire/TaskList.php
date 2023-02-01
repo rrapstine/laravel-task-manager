@@ -42,8 +42,8 @@ class TaskList extends Component
         // Save the tasks collection to the database
         $this->project->save();
 
-        // Emit taskAltered to self
-        $this->emit('taskAltered');
+        // Refresh tasks
+        $this->refreshTasks();
     }
 
     public function refreshTasks()

@@ -4,12 +4,13 @@
 @include('partials.head')
 
 <body class="antialiased bg-slate-900">
-  <div class="flex flex-col h-screen">
-    @include('partials.header')
-    
-    <div class="container flex mx-auto justify-center w-full">
-      @yield('content')
+    <div class="flex flex-col h-screen">
+        @include('partials.header')
+
+        <div class="container flex mx-auto justify-center w-full">
+            @yield('content')
+        </div>
     </div>
-  </div>
 </body>
+
 </html>
