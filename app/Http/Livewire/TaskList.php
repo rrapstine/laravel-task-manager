@@ -18,7 +18,9 @@ class TaskList extends Component
     public function refreshTasks()
     {
         $this->project->load(['tasks' => function ($query) {
-            $query->orderBy('completed_at');
+            $query
+                ->orderBy('completed_at')
+                ->orderBy('priority');
         }]);
     }
 

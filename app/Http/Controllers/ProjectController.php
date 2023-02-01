@@ -13,7 +13,9 @@ class ProjectController extends Controller
     {
         return view('project', [
             'project' => $project->load(['tasks' => function ($query) {
-                $query->orderBy('completed_at');
+                $query
+                    ->orderBy('completed_at')
+                    ->orderBy('priority');
             }])
         ]);
     }
