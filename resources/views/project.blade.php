@@ -9,16 +9,13 @@
       <x-button :action="route('project.delete', $project)" type="DELETE" color="red" buttonText="Delete" />
     </div>
     
-    <div class="flex">
-      <input class="shadow appearance-none border rounded w-full py-2 px-3 mr-4 text-grey-darker" placeholder="Add Todo" name="task">
-      <x-button :action="route('task.create', $project)" type="POST" color="blue" buttonText="Add" />
-    </div>
+    <livewire:add-task :project="$project" />
   </div>
 
   @if ($project->tasks->count() > 0)
     <ul>
       @foreach ($project->tasks as $task)
-        <x-task :task="$task" />
+        <livewire:task :task="$task" />
       @endforeach
     </ul>
   @else

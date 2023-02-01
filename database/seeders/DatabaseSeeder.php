@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        // Seed some projects
         Project::create([
             'name' => 'Daily Routine'
         ]);
@@ -28,6 +29,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'World Domination'
         ]);
         
+        // Seed some tasks for the projects
         Task::create([
             'task' => 'Consume coffee',
             'project_id' => 1,
