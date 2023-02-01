@@ -14,6 +14,9 @@
     @livewireStyles
     @livewireScripts
 
+    <!-- Laravel Livewire Sortable -->
+    <script src="https://cdn.jsdelivr.net/gh/livewire/sortable@v0.x.x/dist/livewire-sortable.js"></script>
+
     <!-- Everything else -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>

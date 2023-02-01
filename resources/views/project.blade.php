@@ -16,7 +16,7 @@
   </div>
 
   @if ($project->tasks->count() > 0)
-    <livewire:task-list :project="$project"/>
+    <livewire:task-list :project="$project" />
   @else
     <p>No tasks yet.</p>
   @endif

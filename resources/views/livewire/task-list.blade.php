@@ -1,6 +1,6 @@
-<ul>
+<ul wire:sortable="reorder">
   {{-- {{dd($project->tasks);}} --}}
   @foreach ($project->tasks as $task)
-    <livewire:task :task="$task" wire:key="task-{{ $task->id }}" />
+    <livewire:task :task="$task" />
   @endforeach
 </ul>
