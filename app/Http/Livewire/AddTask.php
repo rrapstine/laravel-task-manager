@@ -29,7 +29,9 @@ class AddTask extends Component
 
         $this->task->save();
 
-        $this->task = new Task();
+        $this->emitTo('task-list', 'taskAdded');
+        
+        $this->task = new Task;
     }
     
     public function render()

@@ -13,11 +13,7 @@
   </div>
 
   @if ($project->tasks->count() > 0)
-    <ul>
-      @foreach ($project->tasks as $task)
-        <livewire:task :task="$task" />
-      @endforeach
-    </ul>
+    <livewire:task-list :project="$project"/>
   @else
     <p>No tasks yet.</p>
   @endif
