@@ -20,7 +20,7 @@
       @if ($projects->count() > 0)
         @foreach ($projects as $project)
         <li class="pt-2">
-          <a href="{{ route('projects', $project) }}" class="hover:text-orange-700 font-bold">
+          <a href="{{ route('project', $project) }}" class="hover:text-orange-700 font-bold">
             {{ $project->name }}
           </a>
         </li>
@@ -39,10 +39,11 @@
   <div class="fixed inset-0 z-20 flex items-center justify-center overflow-auto bg-black bg-opacity-50" x-show="showModal">
     {{-- Modal Inner --}}
     <div class="max-w-lg px-6 py-4 mx-auto text-left bg-white rounded shadow" @click.away="showModal = false">
-      <div class="flex">
-        <input class="shadow appearance-none border rounded w-full py-2 px-3 mr-4 text-grey-darker" placeholder="Project Name">
-        <button class="flex-no-shrink p-2 border-2 rounded text-blue-500 border-blue-500 hover:text-white hover:bg-blue-500">Create</button>
-      </div>
+      <form class="flex" method="POST" action="{{ route('project.create', $project) }}">
+        @csrf
+        <input class="shadow appearance-none border rounded w-full py-2 px-3 mr-4 text-grey-darker" placeholder="Project Name" name="name">
+        <button class="flex-no-shrink p-2 border-2 rounded text-blue-500 border-blue-500 hover:text-white hover:bg-blue-500" type="submit">Create</button>
+      </form>
     </div>
   </div>
 </div>

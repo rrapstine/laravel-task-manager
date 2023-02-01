@@ -4,12 +4,15 @@
 
 <div class="bg-white rounded shadow p-6 w-full lg:w-3/4">
   <div class="mb-4">
-    <h2 class="text-xl mb-4">Projects / <span class="font-bold">{{ $project->name }}</span></h2>
-    
-    <div class="flex">
-      <input class="shadow appearance-none border rounded w-full py-2 px-3 mr-4 text-grey-darker" placeholder="Add Todo">
-      <button class="flex-no-shrink p-2 border-2 rounded text-blue-500 border-blue-500 hover:text-white hover:bg-blue-500">Add</button>
+    <div class="flex mb-4 items-center" x-data=>
+      <h2 class="text-xl mr-2">Projects / <span class="font-bold">{{ $project->name }}</span></h2>
+      <x-button :action="route('project.delete', $project)" color="red" buttonText="Delete" />
     </div>
+    
+    <form method="POST" action={{ route('task.create', $project) }} class="flex">
+      <input class="shadow appearance-none border rounded w-full py-2 px-3 mr-4 text-grey-darker" placeholder="Add Todo">
+      <x-button :action="route('task.create', $project)" color="blue" buttonText="Add" />
+    </form>
   </div>
 
   @if ($project->tasks->count() > 0)
