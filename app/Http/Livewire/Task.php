@@ -23,7 +23,6 @@ class Task extends Component
         $this->emitTo('task-list', 'taskAltered');
     }
 
-    // Make a function to reveerse the complete function
     public function unComplete()
     {
         $this->task->isComplete = false;
