@@ -31,7 +31,6 @@ class ProjectController extends Controller
     
     public function delete(Project $project)
     {
-        dd($project);
         $project_to_delete = Project::findOrFail($project);
         
         $project_to_delete->tasks()->delete();
