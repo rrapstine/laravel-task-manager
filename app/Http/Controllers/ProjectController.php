@@ -4,13 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Models\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProjectController extends Controller
 {
 
     public function show(Project $project)
     {
-        return view('project', ['project' => $project->load('tasks')]);
+        return view('project', [
+            'project' => $project->load(['tasks' => function ($query) {
+                $query->orderBy('completed_at');
+            }])
+        ]);
     }
     
     public function create(Request $request)
@@ -22,8 +27,9 @@ class ProjectController extends Controller
         return redirect()->route('project', $project);
     }
     
-    public function delete($project)
+    public function delete(Project $project)
     {
+        dd($project);
         $project_to_delete = Project::findOrFail($project);
         
         $project_to_delete->tasks()->delete();

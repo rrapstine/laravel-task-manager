@@ -11,13 +11,15 @@ class TaskList extends Component
 
     protected $listeners = [
         'taskAdded' => 'refreshTasks',
-        'taskCompleted' => '$refresh',
+        'taskAltered' => 'refreshTasks',
         'taskDeleted' => 'refreshTasks',
     ];
 
     public function refreshTasks()
     {
-        $this->project->load('tasks');
+        $this->project->load(['tasks' => function ($query) {
+            $query->orderBy('completed_at');
+        }]);
     }
 
     public function render()

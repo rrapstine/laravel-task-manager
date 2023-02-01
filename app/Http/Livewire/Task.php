@@ -16,9 +16,21 @@ class Task extends Component
     public function complete()
     {
         $this->task->isComplete = true;
+        $this->task->completed_at = now();
+
         $this->task->save();
 
-        $this->emitTo('task-list', 'taskCompleted');
+        $this->emitTo('task-list', 'taskAltered');
+    }
+
+    // Make a function to reveerse the complete function
+    public function unComplete()
+    {
+        $this->task->isComplete = false;
+        $this->task->completed_at = null;
+        $this->task->save();
+
+        $this->emitTo('task-list', 'taskAltered');
     }
     
     public function delete()
