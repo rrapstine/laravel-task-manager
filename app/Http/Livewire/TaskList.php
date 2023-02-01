@@ -10,12 +10,12 @@ class TaskList extends Component
     public Project $project;
 
     protected $listeners = [
-        'taskAdded' => 'getAllTasks',
+        'taskAdded' => 'refreshTasks',
         'taskCompleted' => '$refresh',
-        'taskDeleted' => '$refresh',
+        'taskDeleted' => 'refreshTasks',
     ];
 
-    public function getAllTasks()
+    public function refreshTasks()
     {
         $this->project->load('tasks');
     }
