@@ -9,7 +9,7 @@
       @method('DELETE')
       
       <h2 class="text-xl mr-2">Projects / <span class="font-bold">{{ $project->name }}</span></h2>
-      <button type="submit" class="flex-no-shrink p-2 ml-4 border-2 rounded hover:text-white text-red-700 border-red-700 hover:bg-red-700">Delete</button>
+      <button type="submit" class="flex-no-shrink px-1 border-2 rounded hover:text-white text-red-700 border-red-700 hover:bg-red-700">Delete</button>
     </form>
     
     <livewire:add-task :project="$project" />
